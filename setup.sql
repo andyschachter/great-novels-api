@@ -42,8 +42,8 @@ CREATE TABLE novelsGenres (
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
-  PRIMARY KEY(genreId, novelId)
-  FOREIGN KEY (genreId) REFERENCES genres(id)
+  PRIMARY KEY(genreId, novelId),
+  FOREIGN KEY (genreId) REFERENCES genres(id),
   FOREIGN KEY (novelId) REFERENCES novels(id)
 );
 
