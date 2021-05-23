@@ -82,3 +82,24 @@ VALUES
   ("The Picture of Dorian Gray", 13),
   ("Fahrenheit 451", 14),
   ("The Strange Case of Dr. Jekyll and Mr. Hyde", 15);
+
+INSERT INTO genres (name) 
+VALUES 
+  ("Adventure"),
+  ("African Literature"),
+  ("Crime"),
+  ("Drama"),
+  ("Dystopia"),
+  ("Fantasy"),
+  ("Fiction"),
+  ("French Literature"),
+  ("Gothic"),
+  ("Historical Fiction"),
+  ("Horror"),
+  ("Mystery"),
+  ("Plays"),
+  ("Russian Literature"),
+  ("Science Fiction"),
+  ("Time Travel"),
+  ("Thriller"),  
+  ("War");
