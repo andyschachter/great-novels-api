@@ -15,6 +15,25 @@ const getAllNovels = async (request, response) => {
   }
 }
 
+const getNovelById = async (request, response) => {
+  try {
+    const { id } = request.params
+
+    const novel = await models.Novels.findOne({
+      where: { id },
+      include: [{
+        model: models.Authors
+      },
+      { model: models.Genres }]
+    })
+
+    return novel ? response.send(novel) : response.sendStatus(404)
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve genre')
+  }
+}
+
 module.exports = {
-  getAllNovels
+  getAllNovels,
+  getNovelById
 }
