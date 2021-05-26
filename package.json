@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "lint": "eslint --format codeframe .",
-    "lint:fix": "eslint --fix --format codeframe ."
+    "lint:fix": "eslint --fix --format codeframe .",
+    "dev:migrate": "env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js"
   },
   "repository": {
     "type": "git",
