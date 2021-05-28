@@ -15,9 +15,9 @@ app.get('/genres/:id', getGenreById)
 
 app.get('/novels', getAllNovels)
 
-app.get('/novels/:id', getNovelById)
-
 app.get('/novels/:title', getNovelByTitle)
+
+app.get('/novels/:id', getNovelById)
 
 app.listen(1347, () => {
   console.log('Listening on port 1347...') // eslint-disable-line no-console
