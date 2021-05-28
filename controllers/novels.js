@@ -33,7 +33,30 @@ const getNovelById = async (request, response) => {
   }
 }
 
+const getNovelByTitle = async (request, response) => {
+  try {
+    const { title } = request.params
+
+    const novel = await models.Novels.findOne({
+      where: {
+        title: {
+          [models.Op.like]: `%${title}%`
+        }
+      },
+      include: [{
+        model: models.Authors
+      },
+      { model: models.Genres }]
+    })
+
+    return novel ? response.send(novel) : response.sendStatus(404)
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve genre')
+  }
+}
+
 module.exports = {
   getAllNovels,
-  getNovelById
+  getNovelById,
+  getNovelByTitle
 }

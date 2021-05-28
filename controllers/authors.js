@@ -28,7 +28,7 @@ const getAuthorById = async (request, response) => {
   }
 }
 
-const getAuthorByNameLast = async (request, response) => {
+const getAuthorByLastName = async (request, response) => {
   try {
     const { nameLast } = request.params
 
@@ -53,5 +53,5 @@ const getAuthorByNameLast = async (request, response) => {
 module.exports = {
   getAllAuthors,
   getAuthorById,
-  getAuthorByNameLast
+  getAuthorByLastName
 }
