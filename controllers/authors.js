@@ -28,7 +28,30 @@ const getAuthorById = async (request, response) => {
   }
 }
 
+const getAuthorByNameLast = async (request, response) => {
+  try {
+    const { nameLast } = request.params
+
+    const author = await models.Authors.findOne({
+      where: {
+        nameLast: {
+          [models.Op.like]: `%${nameLast}%`
+        }
+      },
+      include: [{
+        model: models.Novels,
+        include: [{ model: models.Genres }]
+      }]
+    })
+
+    return author ? response.send(author) : response.sendStatus(404)
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve author')
+  }
+}
+
 module.exports = {
   getAllAuthors,
-  getAuthorById
+  getAuthorById,
+  getAuthorByNameLast
 }
