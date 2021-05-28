@@ -35,16 +35,89 @@ module.exports = {
       { title: 'War and Peace', authorId: 12 },
       { title: 'The Picture of Dorian Gray', authorId: 13 },
       { title: 'Fahrenheit 451', authorId: 14 },
-      { title: 'The Strange Case of Dr. Jekyll and Mr. Hyde', authorId: 15 },
+      { title: 'The Strange Case of Dr. Jekyll and Mr. Hyde', authorId: 15 }
+    ])
+
+    await queryInterface.bulkInsert('genres', [
+      { name: 'Adventure' },
+      { name: 'African Literature' },
+      { name: 'Crime' },
+      { name: 'Drama' },
+      { name: 'Dystopia' },
+      { name: 'Fantasy' },
+      { name: 'Fiction' },
+      { name: 'French Literature' },
+      { name: 'Gothic' },
+      { name: 'Historical Fiction' },
+      { name: 'Horror' },
+      { name: 'Mystery' },
+      { name: 'Plays' },
+      { name: 'Russian Literature' },
+      { name: 'Science Fiction' },
+      { name: 'Time Travel' },
+      { name: 'Thriller' },
+      { name: 'War' }
+    ])
+
+    return queryInterface.bulkInsert('novelsgenres', [
+      { genreId: 7, novelId: 1 },
+      { genreId: 12, novelId: 1 },
+      { genreId: 7, novelId: 2 },
+      { genreId: 10, novelId: 2 },
+      { genreId: 1, novelId: 2 },
+      { genreId: 8, novelId: 2 },
+      { genreId: 7, novelId: 3 },
+      { genreId: 10, novelId: 3 },
+      { genreId: 7, novelId: 4 },
+      { genreId: 12, novelId: 4 },
+      { genreId: 3, novelId: 4 },
+      { genreId: 17, novelId: 4 },
+      { genreId: 7, novelId: 5 },
+      { genreId: 10, novelId: 5 },
+      { genreId: 4, novelId: 5 },
+      { genreId: 13, novelId: 5 },
+      { genreId: 7, novelId: 6 },
+      { genreId: 11, novelId: 6 },
+      { genreId: 6, novelId: 6 },
+      { genreId: 7, novelId: 7 },
+      { genreId: 10, novelId: 7 },
+      { genreId: 7, novelId: 8 },
+      { genreId: 10, novelId: 8 },
+      { genreId: 2, novelId: 8 },
+      { genreId: 7, novelId: 9 },
+      { genreId: 14, novelId: 9 },
+      { genreId: 12, novelId: 9 },
+      { genreId: 7, novelId: 10 },
+      { genreId: 15, novelId: 10 },
+      { genreId: 5, novelId: 10 },
+      { genreId: 7, novelId: 11 },
+      { genreId: 15, novelId: 11 },
+      { genreId: 16, novelId: 11 },
+      { genreId: 7, novelId: 12 },
+      { genreId: 10, novelId: 12 },
+      { genreId: 18, novelId: 12 },
+      { genreId: 14, novelId: 12 },
+      { genreId: 7, novelId: 13 },
+      { genreId: 11, novelId: 13 },
+      { genreId: 9, novelId: 13 },
+      { genreId: 6, novelId: 13 },
+      { genreId: 7, novelId: 14 },
+      { genreId: 15, novelId: 14 },
+      { genreId: 5, novelId: 14 },
+      { genreId: 7, novelId: 15 },
+      { genreId: 12, novelId: 15 },
+      { genreId: 15, novelId: 15 },
+      { genreId: 11, novelId: 15 }
     ])
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.bulkDelete('novelsgenres')
+
+    await queryInterface.bulkDelete('genres')
+
+    await queryInterface.bulkDelete('novels')
+
+    return queryInterface.bulkDelete('authors')
   }
 };
