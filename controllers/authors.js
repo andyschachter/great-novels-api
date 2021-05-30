@@ -10,20 +10,21 @@ const getAllAuthors = async (request, response) => {
   }
 }
 
-const getAuthorByIdOrName = async (request, response) => {
+const getAuthorByLastNameOrId = async (request, response) => {
   try {
-    const { writer } = request.params
+    const { nameOrId } = request.params
 
-    const author = await models.Authors.findOne({
+    const author = await models.Authors.findAll({
       where: {
         [models.Op.or]: [
-          { id: writer },
           {
             nameLast: {
-              [models.Op.like]: `%${writer}%`
+              [models.Op.like]: `%${nameOrId}%`
             }
-          }
+          },
+          { id: nameOrId }
         ]
+
       },
       include: [{
         model: models.Novels,
@@ -39,5 +40,5 @@ const getAuthorByIdOrName = async (request, response) => {
 
 module.exports = {
   getAllAuthors,
-  getAuthorByIdOrName
+  getAuthorByLastNameOrId
 }
