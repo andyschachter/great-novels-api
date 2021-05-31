@@ -1,5 +1,7 @@
 # Great Novels API
 
+*changed sort for data load of tables to be alphabetical by author's first name
+
 ## Part 1 Instructions
 In the initial commit of this project you were provided with data on several novels including their author and genres. Working in a branch called `part-one-answer`, your tasks are:
 
